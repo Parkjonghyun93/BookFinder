@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">BookFinder</string>
+
+
+    <!-- FindActivity -->
+    <string name="search_view_hint">Find books here</string>
+    <string name="thumbnail_description">Thumbnail of book</string>
+    <string name="total_result_format">%d개의 책을 찾았습니다</string>
+
+    <!-- FindViewModel -->
+    <string name="snack_msg_fail">ERROR[%s]</string>
+
+    <!-- google books api -->
+    <string name="google_books_detail_api">https://books.google.co.kr/books?id=%s</string>
+
+    <!-- progress -->
+    <string name="progress_text">Loading!</string>
 </resources>
