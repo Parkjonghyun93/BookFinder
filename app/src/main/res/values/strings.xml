@@ -6,6 +6,7 @@
     <string name="search_view_hint">Find books here</string>
     <string name="thumbnail_description">Thumbnail of book</string>
     <string name="total_result_format">%d개의 책을 찾았습니다</string>
+    <string name="total_result_indicator_format">[%d ~ %d]</string>
 
     <!-- FindViewModel -->
     <string name="snack_msg_fail">ERROR[%s]</string>
