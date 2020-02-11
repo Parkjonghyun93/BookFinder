@@ -56,10 +56,8 @@ data class BooksApiVolumesResponse(
             )
         }
 
-        // 누락
-        // data class userInfo()
+        // data class userInfo() null
         data class saleInfo(var country: String)
-
         data class accessInfo(var country: String)
         data class searchInfo(var textSnippet: String)
     }

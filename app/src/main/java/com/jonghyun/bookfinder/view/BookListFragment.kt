@@ -33,7 +33,7 @@ class BookListFragment : Fragment(), BookListAdapter.ItemClickListener {
         val rcv = view.findViewById<RecyclerView>(R.id.rcv_book_list_list)
 
         rcv.layoutManager = LinearLayoutManager(context)
-        bookListAdapter.itemClickListener = this
+        bookListAdapter.bookListItemClickListener = this
         rcv.adapter = bookListAdapter
     }
 

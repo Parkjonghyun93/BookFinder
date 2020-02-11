@@ -81,4 +81,5 @@ dependencies {
     androidTestImplementation "androidx.test:runner:$androidx_test_runner_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_espresso_version"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_reflect_version"
+    testImplementation "org.koin:koin-test:$koin_version"
 }

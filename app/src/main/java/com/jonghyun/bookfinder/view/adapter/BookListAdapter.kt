@@ -16,7 +16,7 @@ class BookListAdapter : RecyclerView.Adapter<BookListAdapter.BookViewHolder>() {
         fun clickItem(id: String)
     }
 
-    var itemClickListener: ItemClickListener? = null
+    var bookListItemClickListener: ItemClickListener? = null
     var bookList: List<BooksApiVolumesResponse.Volume> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
@@ -34,7 +34,7 @@ class BookListAdapter : RecyclerView.Adapter<BookListAdapter.BookViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
-        holder.generateView(bookList[position], itemClickListener)
+        holder.generateView(bookList[position], bookListItemClickListener)
     }
 
     class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
