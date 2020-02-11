@@ -1,7 +1,6 @@
 package com.jonghyun.bookfinder.viewmodel
 
 import android.os.Handler
-import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.LiveData
@@ -42,11 +41,10 @@ class FindViewModel(private val googleBooksModel: GoogleBooksModel) : BaseViewMo
             googleBooksApi()
         }
     }
-    
+
     var onPageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
         override fun onPageSelected(position: Int) {
             super.onPageSelected(position)
-            observableIndicator.set(getIndicator(position))
             if (viewPager2Fix) {
                 googleBooksApi(position)
             } else {
@@ -94,21 +92,20 @@ class FindViewModel(private val googleBooksModel: GoogleBooksModel) : BaseViewMo
                     }
                     observableTotalCount.set(responseTotalBookCount)
                     _totalBooksCount.postValue(responseTotalBookCount)
+                    observableIndicator.set(getIndicator(startIndex, responseTotalBookCount))
                     _isProgress.postValue(false)
                 }
             })
     }
 
-    private fun getIndicator(position: Int): String {
-        totalBooksCount.value?.let {
-            val startIndicator = (position * 20) + 1
-            var endIndicator = IntUtil.getSmallerInt((position + 1) * 20, it)
-            return "[$startIndicator ~ $endIndicator]"
-        }
-        return ""
+    private fun getIndicator(position: Int, totalBooksCount: Int): String {
+        val startIndicator = (position * GOOGLE_BOOKS_API_MAX_RESULT) + 1
+        var endIndicator = IntUtil.getSmallerInt((position + 1) * GOOGLE_BOOKS_API_MAX_RESULT, totalBooksCount)
+        return "[$startIndicator ~ $endIndicator]"
     }
 
     private fun clearVolumeList() {
         _volumeList.postValue(emptyList())
+        observableTotalCount.set(0)
     }
 }

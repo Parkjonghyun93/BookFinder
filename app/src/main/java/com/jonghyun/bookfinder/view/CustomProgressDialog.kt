@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatDialog
 import androidx.appcompat.widget.AppCompatImageView
+import android.graphics.drawable.ColorDrawable
 import com.jonghyun.bookfinder.R
 
 
@@ -25,6 +26,9 @@ class CustomProgressDialog(context: Context) {
     private fun initView() {
         dialog?.setCancelable(false)
         dialog?.setContentView(R.layout.progress_layout)
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
+
+
         val progress = dialog?.findViewById<AppCompatImageView>(R.id.iv_progress)
         val animation: AnimationDrawable = progress?.background as AnimationDrawable
         progress.post { animation.start() }
