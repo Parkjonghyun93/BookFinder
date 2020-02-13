@@ -10,7 +10,7 @@ import com.jonghyun.bookfinder.data.response.BooksApiVolumesResponse
 import com.jonghyun.bookfinder.model.GoogleBooksModel
 import com.jonghyun.bookfinder.resource.DefaultResource.GOOGLE_BOOKS_API_MAX_RESULT
 import com.jonghyun.bookfinder.resource.DefaultResource.TEXT_CHANGED_EVENT_TIME
-import com.jonghyun.bookfinder.util.IntUtil
+import com.jonghyun.bookfinder.util.compareForSmaller
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -100,7 +100,7 @@ class FindViewModel(private val googleBooksModel: GoogleBooksModel) : BaseViewMo
 
     private fun getIndicator(position: Int, totalBooksCount: Int): String {
         val startIndicator = (position * GOOGLE_BOOKS_API_MAX_RESULT) + 1
-        var endIndicator = IntUtil.getSmallerInt((position + 1) * GOOGLE_BOOKS_API_MAX_RESULT, totalBooksCount)
+        var endIndicator = totalBooksCount.compareForSmaller((position + 1) * GOOGLE_BOOKS_API_MAX_RESULT)
         return "[$startIndicator ~ $endIndicator]"
     }
 
