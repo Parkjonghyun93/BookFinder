@@ -38,7 +38,7 @@ class BookListFragment : Fragment(), BookListAdapter.ItemClickListener {
     }
 
     private fun initObserve() {
-        findViewModel.volumeList.observe(this, Observer {
+        findViewModel.volumeList.observe(viewLifecycleOwner, Observer {
             bookListAdapter.bookList = it
             bookListAdapter.notifyDataSetChanged()
         })
